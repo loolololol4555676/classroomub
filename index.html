@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+function saveProfile() { myName = document.getElementById('username-input').value; localStorage.setItem('chatUsername', myName); }
+function copyId() { navigator.clipboard.writeText(document.getElementById('my-id').value); alert("ID Copied"); }
+function setWallpaperColor(hex) { document.body.style.backgroundImage = 'none'; document.body.style.backgroundColor = hex; localStorage.setItem('ub-bg-type','color'); localStorage.setItem('ub-bg-val',hex); }
+function setWallpaperImage() { const url = document.getElementById('bg-url').value; document.body.style.backgroundImage = `url('${url}')`; localStorage.setItem('ub-bg-type','img'); localStorage.setItem('ub-bg-val',url); }
+function loadWallpaper() {
+const t = localStorage.getItem('ub-bg-type'), v = localStorage.getItem('ub-bg-val');
+if(t==='color') document.body.style.backgroundColor = v;
+else if(t==='img') document.body.style.backgroundImage = `url('${v}')`;
+}
+
+
+function animateSidebar() {
+['sidebar-logo', 'btn-home', 'btn-games', 'btn-padlet', 'btn-chat', 'btn-helios', 'btn-settings', 'btn-add'].forEach((id, i) => {
+setTimeout(() => {
+const el = document.getElementById(id);
+if(el) { if(id === 'sidebar-logo') el.style.opacity = '1'; else el.classList.add('pop-in'); }
+}, i * 100);
+});
+}
+</script>
+</body>
+</html>
+
